@@ -1,5 +1,8 @@
 // document.addEventListener("DOMContentLoaded", redirect);
+fetch("http://localhost/Login-Register-Design/back-end/signin.php/")
 
+
+// function getPerson(email,password){}
 const login_button = document.getElementById("loginbtn").addEventListener("click",showMessage);
 
 function showMessage(){
