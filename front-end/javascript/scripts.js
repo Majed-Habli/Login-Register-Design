@@ -10,6 +10,7 @@ function showMessage(){
         console.log("check empty fields");
     }else {
         // check if data in db
+        console.log("hello")
     }
 }
 
