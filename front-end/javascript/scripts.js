@@ -1,19 +1,31 @@
-// document.addEventListener("DOMContentLoaded", redirect);
-fetch("http://localhost/Login-Register-Design/back-end/signin.php/")
+  const login_button = document.getElementById("loginbtn");
 
-
-// function getPerson(email,password){}
-const login_button = document.getElementById("loginbtn").addEventListener("click",showMessage);
-
-function showMessage(){
+  async function getData() {
     const login_email = document.getElementById("login_email").value;
-    const login_pasword = document.getElementById("login_password").value;
-
-    if ( login_email == ""  ||  login_pasword == "" ){
-        console.log("check empty fields");
-    }else {
-        // check if data in db
-        console.log("hello")
+    const login_password = document.getElementById("login_password").value;
+    
+    const login_data = { email: login_email, password: login_password };
+    const url = "http://localhost/Login-Register-Design/back-end/signin.php";
+    const body = JSON.stringify(login_data);
+    
+    try {
+      const data = await fetch(url, {
+        method: "post",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: body
+      }).then(response => response.json());
+      
+      console.log(data); 
+      return data;
+    } catch (err) {
+      console.log(err);
+      return null;
     }
-}
+  }
 
+  login_button.addEventListener("click", function (event) {
+    event.preventDefault(); 
+    getData();
+  });
