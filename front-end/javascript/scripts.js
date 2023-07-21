@@ -15,7 +15,8 @@
           'Content-Type': 'application/json',
         },
         body: body
-      }).then(response => response.json());
+      }).then(response => response.json())
+      .then(data=>(localStorage.setItem("response" , JSON.stringify(data))));
       
       console.log(data); 
       return data;
@@ -23,9 +24,12 @@
       console.log(err);
       return null;
     }
+
+    
   }
 
   login_button.addEventListener("click", function (event) {
     event.preventDefault(); 
     getData();
+    window.location.href= "/front-end/javascript/dashboard.html"
   });
